@@ -10,7 +10,7 @@ Any square matrix M can be written as the product of two matrices, M = LU, where
 ## Why use it might be a good idea?
 LU decomposition simplifies solving linear systems, matrix inversion, and determinant calculation more efficiently.
 
-### Algorithm
+## Algorithm
 
 1. **Write M as the product of two matrices**: M = LU.
 
