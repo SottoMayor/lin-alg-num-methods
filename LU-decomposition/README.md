@@ -16,7 +16,7 @@ LU decomposition simplifies solving linear systems, matrix inversion, and determ
 
 2. **Starting point**: Write M in the simplest way possible, M = I * M, where I is the identity matrix. So, L = I and U = M.
 
-3. **Gaussian elimination on U**:
+3. **Gaussian elimination on U**:   
    3.1. The goal is to reduce U (zero out the elements below the diagonal).
    
    3.2. After each elimination at position ij, record the multiplier used at position ij in matrix L.
