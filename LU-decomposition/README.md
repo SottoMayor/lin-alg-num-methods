@@ -26,3 +26,8 @@ LU decomposition simplifies solving linear systems, matrix inversion, and determ
    3.4. Stop when some U_k is fully reduced (in upper triangular form).
 
 4. **End**.
+
+## Algorithm Weakness: Handling Zeros on the Diagonal
+
+A weakness of this LU decomposition algorithm is its inability to handle cases where a diagonal element of matrix \( U \) is zero during iterations. When \( U[i, i] = 0 \), a division by zero occurs, causing the decomposition process to fail, even if the original matrix is not singular. To address this issue, implementing **partial pivoting** is recommended.
+
