@@ -25,28 +25,45 @@ def lu_decomposition(M):
             L[j, i] = factor
             
             # Updates the row j of U
-            print(U[j, :])
-            print(U[i, :])
-            
             U[j, :] = U[j, :] - factor * U[i, :]
     
     return L, U
 
 
-M = np.array([
+def solve_linear_system(A, b):
+    # Getting the L and U matrices
+    L, U = lu_decomposition(A)
+
+    print("Matrix L:")
+    print(L)
+    print("\nMatrix U:")
+    print(U)
+
+
+    # Solve Ly = b
+    y = np.zeros_like(b, dtype='float')
+    for i in range(len(b)):
+        y[i] = b[i] - np.dot(L[i, :i], y[:i])
+
+    # Solve Ux = y
+    x = np.zeros_like(b, dtype='float')
+    for i in range(len(b) - 1, -1, -1):
+        x[i] = (y[i] - np.dot(U[i, i + 1:], x[i + 1:])) / U[i, i]
+
+    return x
+
+
+A = np.array([
     [1, 6, 2, 4],
     [3, 19, 4, 15],
     [1, 4, 8, -12],
     [5, 33, 9, 3]
 ], dtype="float")
 
+b = np.array([8, 25, 18, 72])
 
-L, U = lu_decomposition(M)
-
-print("Matrix L:")
-print(L)
-print("\nMatrix U:")
-print(U)
+solution = solve_linear_system(A, b)
+print("\nSolution:", solution, '\n')
 
 # Possible LU decomposition.
 # M = np.array([
