@@ -1,12 +1,6 @@
 import numpy as np
 
 def lu_decomposition(M):
-
-    # Singular Verification
-    isSingular = np.linalg.det(M) == 0
-    if(isSingular):
-        raise ValueError("It is not possible to perform the LU decomposition on singular matricies")
-    
     # Dimension
     n = M.shape[0]
 
@@ -16,6 +10,11 @@ def lu_decomposition(M):
     
     # Gauss Elimination
     for i in range(n):
+
+        # Check if the factor calculation is possible. Notice a / b is possible since b != 0.
+        if U[i, i] == 0.0:
+            raise ValueError("Division by zero error. LU decomposition cannot proceed because U[i, i] is zero.")
+
         
         # Gauss Elimination
         for j in range(i+1, n):
