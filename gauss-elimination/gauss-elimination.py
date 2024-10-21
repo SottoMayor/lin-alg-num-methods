@@ -14,6 +14,12 @@ def gauss_elimination(A, b):
         for k in range(i + 1, n):
             A[k] = A[k] - A[k][i] * A[i]
 
+    # print A echelon form
+    print('\nMatrix A:')
+    for row in A[:, :-1]:  # Ignora a última coluna de b
+        print(" ".join(f"{elem:.2f}" for elem in row))
+    print('\n')
+
     # Step 4 - Back Substitution
     x = np.zeros(n)
     for i in range(n-1, -1, -1):
