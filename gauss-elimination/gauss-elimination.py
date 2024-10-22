@@ -5,6 +5,8 @@ def gauss_elimination(A, b):
     n = len(b)
     A = np.hstack([A, b.reshape(-1, 1)])
 
+    np.set_printoptions(precision=4, suppress=True)
+
     # Step 3 - Echelon process
     for i in range(n):
         # Step 1 - Pivot
@@ -14,9 +16,13 @@ def gauss_elimination(A, b):
         for k in range(i + 1, n):
             A[k] = A[k] - A[k][i] * A[i]
 
-    # print A echelon form
+
+    # Echelon form of augmented matrix A
+    print('Augmented Matrix A:')
+    print(A)
+    
     print('\nMatrix A:')
-    for row in A[:, :-1]:  # Ignora a última coluna de b
+    for row in A[:, :-1]:  # Ignore the last column of b
         print(" ".join(f"{elem:.2f}" for elem in row))
     print('\n')
 
@@ -30,8 +36,8 @@ def gauss_elimination(A, b):
 
 if __name__ == "__main__":
     # Important: Set the A and b as float matrix.
-    A = np.array([[1, -3, 2], [-2, 8, -1], [4, -6, 5]], dtype=float)
-    b = np.array([11, -15, 29], dtype=float)
+    A = np.array([[1, -1, 2, 6, 6], [4, 3, 0, -1, 4], [5, 1, -2, -2, -2], [0, 1, -2, 3, -2], [1, 5, -1, 0, 5]], dtype=float)
+    b = np.array([3, 0, 2, -1, 3], dtype=float)
 
     # Solve
     sol = gauss_elimination(A, b)
@@ -44,3 +50,5 @@ if __name__ == "__main__":
 
 #  A = np.array([[9, 6, -3, 3], [6, 20, 2, 22], [-3, 2, 6, 2], [3, 22, 2, 28]], dtype=float)
 #     b = np.array([12, 64, 4, 82], dtype=float)
+
+
