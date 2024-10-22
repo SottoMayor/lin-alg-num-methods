@@ -34,6 +34,8 @@ def solve_linear_system(A, b):
     # Getting the L and U matrices
     L, U = lu_decomposition(A)
 
+    np.set_printoptions(precision=4, suppress=True)
+
     print("Matrix L:")
     print(L)
     print("\nMatrix U:")
