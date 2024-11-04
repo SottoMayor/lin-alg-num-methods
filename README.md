@@ -13,3 +13,5 @@ This repository contains numerical linear algebra implementations, organized int
 
 1. **Gauss Elimination**
 2. **LU Decomposition**
+3. **Gram-Schmidt Methods**
+4. **QR Decomposition**
